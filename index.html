@@ -5,40 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <p>Calculator</p>
+    <!-- Create an element to display the calculation. -->
+    <p class="js-calculation showCalculation"></p>
+
     <p>
       <button
+        class="darkButtons"
         onclick="
-      calculation += '1';
-      console.log(calculation)
+        updateCalculation('1');
       "
       >
         1
       </button>
+
       <button
+        class="darkButtons"
         onclick="
-        calculation += '2';
-        console.log(calculation);
+        updateCalculation('2');
       "
       >
         2
       </button>
 
       <button
+        class="darkButtons"
         onclick="
-      calculation += '3';
-      console.log(calculation);
+        updateCalculation('3');
       "
       >
         3
       </button>
+
       <button
+        class="orangeButtons"
         onclick="
-    calculation +=  ' + ';
-    console.log(calculation);
-    "
+        updateCalculation(' + ');
+      "
       >
         +
       </button>
@@ -46,35 +51,36 @@
 
     <p>
       <button
+        class="darkButtons"
         onclick="
-        calculation += '4';
-        console.log(calculation);
-        "
+        updateCalculation('4');
+      "
       >
         4
       </button>
+
       <button
+        class="darkButtons"
         onclick="
-      calculation += '5';
-      console.log(calculation);
+        updateCalculation('5');
       "
       >
         5
       </button>
 
       <button
+        class="darkButtons"
         onclick="
-      calculation += '6';
-      console.log(calculation);
+        updateCalculation('6');
       "
       >
         6
       </button>
 
       <button
+        class="orangeButtons"
         onclick="
-      calculation += ' - ';
-      console.log(calculation);
+        updateCalculation(' - ');
       "
       >
         -
@@ -83,88 +89,122 @@
 
     <p>
       <button
+        class="darkButtons"
         onclick="
-        calculation += '7';
-        console.log(calculation);
-        "
+        updateCalculation('7');
+      "
       >
         7
       </button>
 
       <button
+        class="darkButtons"
         onclick="
-      calculation += '8';
-      console.log(calculation);
+        updateCalculation('8');
       "
       >
         8
       </button>
 
       <button
+        class="darkButtons"
         onclick="
-      calculation += '9';
-      console.log(calculation);
+        updateCalculation('9');
       "
       >
         9
       </button>
 
       <button
+        class="orangeButtons"
         onclick="
-      calculation += ' * ';
-      console.log(calculation);
+        updateCalculation(' * ');
       "
       >
         *
       </button>
     </p>
+
     <p>
       <button
+        class="darkButtons"
         onclick="
-  calculation += calculation;
-  console.log(calculation);
-  "
+        updateCalculation('0');
+      "
       >
         0
       </button>
 
       <button
+        class="darkButtons"
         onclick="
-calculation += '.';
-"
+        updateCalculation('.');
+      "
       >
         .
       </button>
 
       <button
+        class="darkButtons"
         onclick="
-      calculation = eval(calculation);
-      console.log(calculation);
+        calculation = eval(calculation);
+        
+        // Display the calculation on the page
+        // instead of console.log
+        displayCalculation();
+
+        localStorage.setItem('calculation', calculation);
       "
       >
         =
       </button>
 
       <button
+        class="orangeButtons"
         onclick="
-          calculation += ' / ';
-          console.log(calculation);
-          "
+        updateCalculation(' / ');
+      "
       >
         /
       </button>
     </p>
-    <button
-      onclick="
-    calculation = ' ';
-    console.log(calculation);
-    "
-    >
-      Clear
-    </button>
+
+    <p>
+      <button
+        class="darkButtons clearButton"
+        onclick="
+        calculation = '';
+        
+        // Display the calculation on the page
+        // instead of console.log
+        displayCalculation();
+
+        localStorage.setItem('calculation', calculation);
+      "
+      >
+        Clear
+      </button>
+    </p>
 
     <script>
-      let calculation = " ";
+      let calculation = localStorage.getItem("calculation") || "";
+
+      // Display the calculation when the page first loads.
+      displayCalculation();
+
+      function updateCalculation(value) {
+        calculation += value;
+
+        // Display the calculation on the page
+        // instead of console.log
+        displayCalculation();
+
+        localStorage.setItem("calculation", calculation);
+      }
+
+      function displayCalculation() {
+        document.querySelector(".js-calculation").innerHTML = calculation;
+      }
     </script>
   </body>
 </html>
