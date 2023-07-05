@@ -1,7 +1,7 @@
 body {
   background-color: black;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -10,10 +10,10 @@ body {
 }
 
 button {
-  height: 76px;
-  width: 76px;
+  height: 60px;
+  width: 60px;
   border-radius: 60px;
-  font-size: 26px;
+  font-size: 16px;
   margin-right: 10px;
   color: white;
   cursor: pointer;
